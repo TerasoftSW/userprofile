@@ -7,6 +7,7 @@ import com.terasoft.userprofile.command.domain.entities.Customer;
 import com.terasoft.userprofile.command.domain.values.*;
 import com.terasoft.userprofile.command.infrastructure.repositories.CustomerRepository;
 import com.terasoft.userprofile.contracts.commands.RegisterCustomer;
+import org.axonframework.commandhandling.CommandHandler;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -18,7 +19,8 @@ public class RegisterCustomerHandler {
         this.customerRepository = customerRepository;
     }
 
-    Result<Customer, Notification> handle (RegisterCustomer command){
+    @CommandHandler
+    public Result<Customer, Notification> handle (RegisterCustomer command){
         Notification notification = new Notification();
         UserId userId = UserId.of(UUID.fromString(command.getCustomerId()));
         Result<UserName, Notification> userNameResult = UserName.create(command.getUserName());

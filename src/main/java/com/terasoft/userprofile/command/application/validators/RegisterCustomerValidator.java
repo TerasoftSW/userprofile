@@ -44,11 +44,11 @@ public class RegisterCustomerValidator {
             return notification;
         }
 
-        Optional<Customer> customerOptional = customerRepository.findByUserName(userName);
+        Optional<Customer> customerOptional = customerRepository.findByUserNameValue(userName);
         if (customerOptional.isPresent()) {
             notification.addError("UserName is taken");
         }
-        Optional<Customer> emailCustomerOptional = customerRepository.findByEmail(email);
+        Optional<Customer> emailCustomerOptional = customerRepository.findByEmailValue(email);
         if (emailCustomerOptional.isPresent()) {
             notification.addError("Customer email is taken");
         }

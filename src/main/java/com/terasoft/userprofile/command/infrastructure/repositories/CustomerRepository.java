@@ -7,6 +7,6 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends UsersRepository<Customer> {
-    Optional<Customer> findByEmail(String email);
-    Optional<Customer> findByUserName(String userName);
+    Optional<Customer> findByEmailValue(String email);
+    Optional<Customer> findByUserNameValue(String userName);
 }

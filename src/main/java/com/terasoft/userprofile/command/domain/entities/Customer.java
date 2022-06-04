@@ -2,9 +2,16 @@ package com.terasoft.userprofile.command.domain.entities;
 
 import com.terasoft.common.domain.enums.UserState;
 import com.terasoft.userprofile.command.domain.values.*;
+import com.terasoft.userprofile.contracts.commands.EditCustomer;
+import com.terasoft.userprofile.contracts.commands.RegisterCustomer;
+import com.terasoft.userprofile.contracts.events.CustomerEdited;
+import com.terasoft.userprofile.contracts.events.CustomerRegistered;
 import lombok.Data;
+import org.axonframework.commandhandling.CommandHandler;
 
 import javax.persistence.*;
+
+import java.time.Instant;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
@@ -33,7 +40,7 @@ public class Customer extends User {
                         now
                 )
         );
-    }
+    }*/
 
     @CommandHandler
     public void handle(EditCustomer command){
@@ -51,7 +58,7 @@ public class Customer extends User {
     }
 
 
-    @EventSourcingHandler
+    /*@EventSourcingHandler
     protected void on(CustomerEdited event){
     }*/
 }

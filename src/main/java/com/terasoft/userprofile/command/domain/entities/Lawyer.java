@@ -3,9 +3,16 @@ package com.terasoft.userprofile.command.domain.entities;
 import com.terasoft.common.domain.enums.LawSpecialization;
 import com.terasoft.common.domain.enums.UserState;
 import com.terasoft.userprofile.command.domain.values.*;
+import com.terasoft.userprofile.contracts.commands.EditLawyer;
+import com.terasoft.userprofile.contracts.commands.RegisterLawyer;
+import com.terasoft.userprofile.contracts.events.LawyerEdited;
+import com.terasoft.userprofile.contracts.events.LawyerRegistered;
 import lombok.Data;
+import org.axonframework.commandhandling.CommandHandler;
 
 import javax.persistence.*;
+
+import java.time.Instant;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
@@ -49,8 +56,25 @@ public class Lawyer extends User {
     protected Lawyer() {
     }
 
-
-    /*@CommandHandler
+    @CommandHandler
+    public Lawyer(RegisterLawyer command){
+        Instant now = Instant.now();
+        apply(
+                new LawyerRegistered(
+                        command.getLawyerId(),
+                        command.getUserName(),
+                        command.getFirstName(),
+                        command.getLastName(),
+                        command.getEmail(),
+                        command.getAddress(),
+                        command.getUniversity(),
+                        command.getSpecialization(),
+                        command.getLawyerPrice(),
+                        now
+                )
+        );
+    }
+    @CommandHandler
     public void handle(EditLawyer command){
         Instant now = Instant.now();
         apply(
@@ -67,5 +91,5 @@ public class Lawyer extends User {
                         now
                 )
         );
-    }*/
+    }
 }

@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users/customers")
+@RequestMapping("/customers")
 //@Tag(name = "Customers")
 public class CustomerCommandController {
     private final CustomerApplicationService customerApplicationService;

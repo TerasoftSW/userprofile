@@ -54,11 +54,11 @@ public class EditCustomerValidator {
             return notification;
         }
 
-        Optional<Customer> customerUserNameOptional = customerRepository.findByUserName(userName);
+        Optional<Customer> customerUserNameOptional = customerRepository.findByUserNameValue(userName);
         if (customerUserNameOptional.isPresent()) {
             notification.addError("UserName is taken");
         }
-        Optional<Customer> emailCustomerOptional = customerRepository.findByEmail(email);
+        Optional<Customer> emailCustomerOptional = customerRepository.findByEmailValue(email);
         if (emailCustomerOptional.isPresent()) {
             notification.addError("Customer email is taken");
         }
