@@ -2,6 +2,7 @@ package com.terasoft.userprofile.config;
 
 import com.terasoft.userprofile.command.domain.entities.Customer;
 import com.terasoft.userprofile.command.domain.entities.Lawyer;
+import com.thoughtworks.xstream.XStream;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.eventhandling.EventBus;
@@ -17,6 +18,16 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 public class AxonConfig {
+
+    @Bean
+    public XStream xStream() {
+        XStream xStream = new XStream();
+
+        xStream.allowTypesByWildcard(new String[] {
+                "com.terasoft.userprofile.contracts.**"
+        });
+        return xStream;
+    }
     @Bean
     public CommandBus commandBus(PlatformTransactionManager platformTransactionManager) {
         return SimpleCommandBus.builder()

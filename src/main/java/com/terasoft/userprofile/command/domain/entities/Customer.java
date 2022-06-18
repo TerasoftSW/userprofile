@@ -40,7 +40,7 @@ public class Customer extends User {
                         now
                 )
         );
-    }*/
+    }
 
     @CommandHandler
     public void handle(EditCustomer command){
@@ -55,7 +55,7 @@ public class Customer extends User {
                         now
                 )
         );
-    }
+    }*/
 
 
     /*@EventSourcingHandler

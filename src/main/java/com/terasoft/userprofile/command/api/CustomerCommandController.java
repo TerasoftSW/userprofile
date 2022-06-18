@@ -9,6 +9,7 @@ import com.terasoft.userprofile.command.application.dtos.response.EditCustomerRe
 import com.terasoft.userprofile.command.application.dtos.response.RegisterCustomerResponse;
 import com.terasoft.userprofile.command.application.services.CustomerApplicationService;
 import com.terasoft.userprofile.command.infrastructure.repositories.UserEmailRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.command.AggregateNotFoundException;
 import org.springframework.http.MediaType;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customers")
-//@Tag(name = "Customers")
+@Tag(name = "Customers")
 public class CustomerCommandController {
     private final CustomerApplicationService customerApplicationService;
     private final CommandGateway commandGateway;

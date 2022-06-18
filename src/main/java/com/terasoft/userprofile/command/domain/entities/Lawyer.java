@@ -9,6 +9,7 @@ import com.terasoft.userprofile.contracts.events.LawyerEdited;
 import com.terasoft.userprofile.contracts.events.LawyerRegistered;
 import lombok.Data;
 import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 
 import javax.persistence.*;
 
@@ -92,4 +93,6 @@ public class Lawyer extends User {
                 )
         );
     }
+
+
 }

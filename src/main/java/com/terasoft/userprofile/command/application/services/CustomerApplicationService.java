@@ -48,7 +48,7 @@ public class CustomerApplicationService {
                 registerCustomerRequest.getEmail().trim()
         );
         CompletableFuture<Object> future = commandGateway.send(registerCustomer);
-        CompletableFuture<ResultType> futureResult =  future.handle((ok, ex) -> (ex != null) ? ResultType.FAILURE : ResultType.SUCCESS);
+        CompletableFuture<ResultType> futureResult = future.handle((ok, ex) -> (ex != null) ? ResultType.FAILURE : ResultType.SUCCESS);
         ResultType resultType = futureResult.get();
         if(resultType == ResultType.FAILURE) {
             throw new Exception();

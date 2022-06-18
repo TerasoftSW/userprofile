@@ -10,6 +10,7 @@ import com.terasoft.userprofile.command.infrastructure.repositories.LawyerReposi
 import com.terasoft.userprofile.contracts.commands.EditLawyer;
 import com.terasoft.userprofile.contracts.commands.RegisterLawyer;
 import com.terasoft.userprofile.contracts.events.LawyerEdited;
+import com.terasoft.userprofile.contracts.events.LawyerRegistered;
 import org.axonframework.commandhandling.CommandHandler;
 import org.springframework.stereotype.Component;
 
@@ -96,8 +97,10 @@ public class RegisterLawyerHandler {
                 sp,
                 lawyerPriceResult );
 
+        lawyerRepository.save(lawyer);
+
         // EVENT
-        /*Instant now = Instant.now();
+        Instant now = Instant.now();
         apply(
                 new LawyerRegistered(
                         command.getLawyerId(),
@@ -111,9 +114,8 @@ public class RegisterLawyerHandler {
                         command.getLawyerPrice(),
                         now
                 )
-        );*/
+        );
 
-        lawyerRepository.save(lawyer);
         return Result.success(lawyer);
     }
 

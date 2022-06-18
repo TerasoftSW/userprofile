@@ -13,11 +13,11 @@ public class SwaggerConfig {
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
                 .info(new Info().title("UserProfile microservice")
-                        .description("Customers microservice")
+                        .description("UserProfile microservice")
                         .version("v0.0.1")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("Customers microservice")
+                        .description("UserProfile microservice")
                         .url("https://github.com/TerasoftSW/user-profile"));
     }
 }
